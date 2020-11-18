@@ -21,13 +21,13 @@ public class Item
         this.stats = stats;
     }
 
-    public Item(Inventory inventory)
+    public Item(Item item)
     {
-        this.id = inventory.id;
-        this.title = inventory.title;
-        this.description = inventory.description;
-        this.icon = Resources.Load<Sprite>("Sprites/Inventories/" + inventory.title);
-        this.stats = inventory.stats;
+        this.id = item.id;
+        this.title = item.title;
+        this.description = item.description;
+        this.icon = Resources.Load<Sprite>("Sprites/Inventories/" + item.title);
+        this.stats = item.stats;
 
     }
 
