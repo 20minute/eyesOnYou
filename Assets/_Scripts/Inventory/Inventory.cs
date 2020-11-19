@@ -1,34 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> items;
-    public int capacity = 1;
+    public List<Item> characterItems = new List<Item>();
+    public ItemDataBase ItemDataBase;
 
-    void BuildInventory()
+    private void Start()
     {
-        items = new List<Item>();
+        GiveItems(0);
     }
 
-    void GetItem(Item item)
+    public void GiveItems(int id)
     {
-        if (items.Count > 0)
+        Item itemToAdd = ItemDataBase.GetItem(id);
+        if (characterItems.Count > 0)
         {
+            Debug.Log("can not add because player already has an item: " + characterItems.First().title);
             return;
         }
-        this.items.Add(item);
-    }
-
-    void UseItem()
-    {
-
-    }
-
-    void DelteItem()
-    {
-        this.items = new List<Item>();
+        else
+        {
+            characterItems.Add(itemToAdd);
+        }
+        Debug.Log("Add Item :" + itemToAdd.title);
     }
 
 }
